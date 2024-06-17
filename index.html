@@ -1,0 +1,95 @@
+<!-- Use a more specific doctype declaration -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- Add a lang attribute to the html element -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Attendance Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #008080;
+            margin-top: 20px;
+        }
+        
+        button {
+            background-color: #008080;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #005959;
+        }
+        
+        table {
+            width: 90%; /* Adjusted width */
+            margin: 0 auto; /* Added margin for centering */
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #008080;
+            color: #fff;
+        }
+        
+        .button-container {
+            text-align: center; /* Center the buttons */
+        }
+    </style>
+</head>
+<body>
+    <h1>RFID Attendance Data</h1>
+    <div class="button-container">
+        <button id="save">Save to File</button>
+        <button id="clear">Clear Table</button>
+        <button id="logout" onclick="logout()">Logout</button>
+    </div>
+    <table id="data">
+        <tr>
+            <th>Timestamp</th>
+            <th>RFID Tag</th>
+        </tr>
+    </table>
+
+    <!-- Load scripts at the end of the body for better performance -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Check if the user is logged in
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
+
